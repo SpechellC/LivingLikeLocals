@@ -1,0 +1,20 @@
+@IBAction func callButton(sender: AnyObject) {
+      UIApplication.sharedApplication().openURL(NSURL(string: "tel://1234567890"))
+}
+let phoneNumberLabel:UILabel = UILabel(frame: CGRectMake(85, 220, 120, 45))
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        phoneNumberLabel.bounds = CGRectMake(CGRectGetMidX(self.view.frame), 220, 120, 45)
+        phoneNumberLabel.text = "Call Number"
+        self.view.addSubview(phoneNumberLabel)
+    }
+
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        for touch: AnyObject in touches {
+            let location = touch.locationInView(self.view)
+            if CGRectContainsPoint(phoneNumberLabel.frame, location) {
+                UIApplication.sharedApplication().openURL(NSURL(string: "tel://1234567890"))
+            }
+        }
+    }
